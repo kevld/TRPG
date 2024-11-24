@@ -1,0 +1,6 @@
+@TRPG_HostAddress = http://localhost:5277
+
+GET {{TRPG_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
