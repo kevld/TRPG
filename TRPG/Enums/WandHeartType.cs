@@ -2,8 +2,8 @@
 {
     public enum WandHeartType
     {
-        Phoenix,
-        Dragon,
-        Unicorn
+        Phoenix = 0,
+        Dragon = 1,
+        Unicorn = 2
     }
 }

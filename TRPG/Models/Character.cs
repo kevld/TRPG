@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using TRPG.Enums;
+using TRPG.ViewModels;
 
 namespace TRPG.Models
 {
@@ -35,8 +37,40 @@ namespace TRPG.Models
 
         public List<Spell> UnlockedSpells { get; } = [];
 
+        public Wand? Wand { get; set; }
+
         public User User { get; set; } = null!;
         public Guid UserId { get; set; }
+
+        public IsCharacterCreatedVM IsCharacterCreated()
+        {
+            if (!IsNameSet()) return new(false, 0);
+            if(!IsBaseStatsSet()) return new(false, 1);
+            if(!IsMagicStatsSet()) return new(false, 2);
+            if(!IsWandSet()) return new(false, 3);
+
+            return new(true, 0);
+        }
+
+        private bool IsNameSet()
+        {
+            return !string.IsNullOrEmpty(Name);
+        }
+
+        private bool IsBaseStatsSet()
+        {
+            return !(new[] { Courage, Intelligence, Loyalty, Tricking }.Contains(6));
+        }
+
+        private bool IsMagicStatsSet()
+        {
+            return !(new[] { AttackAndDefenseMagic, CharmsAndMetamorphosisMagic, PotionMagic }.Contains(6));
+        }
+
+        private bool IsWandSet()
+        {
+            return Wand != null;
+        }
     }
 
     public class CharacterEntityTypeConfiguration : IEntityTypeConfiguration<Character>

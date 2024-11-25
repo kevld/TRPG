@@ -14,6 +14,7 @@ namespace TRPG.Controllers
             _db = db;
         }
 
+        [HttpPost()]
         public async Task<IActionResult> CreateUser([FromBody] string name)
         {
             try
@@ -32,6 +33,14 @@ namespace TRPG.Controllers
             {
                 throw e;
             }
+        }
+
+        [HttpGet("{userId}/character")]
+        public async Task<IActionResult> GetCharacterIdByUserId(string userId)
+        {
+            User user = _db.Users.Find(userId);
+
+            return Ok(user?.Character?.Id);
         }
     }
 }

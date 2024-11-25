@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using TRPG.Enums;
@@ -26,10 +27,10 @@ namespace TRPG.Controllers
             return Ok(character);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateCharacter([FromBody] Guid userId, [FromBody] string name)
+        [HttpPost("{userId}")]
+        public async Task<IActionResult> CreateCharacter(string userId, [FromBody] string name)
         {
-            User user = await _db.Users.SingleOrDefaultAsync(x => x.Id == userId);
+            User user = await _db.Users.FindAsync(userId.ToString());
             if (user == null)
                 return NotFound(userId);
 
@@ -129,7 +130,7 @@ namespace TRPG.Controllers
         }
 
         [HttpPut("{characterId}/add-lp")]
-        public async Task<IActionResult> AddStatOn(int characterId, [FromBody] int amount)
+        public async Task<IActionResult> AddLifePoints(int characterId, [FromBody] int amount)
         {
             Character character = await _db.Characters.FindAsync(characterId);
 
@@ -158,6 +159,36 @@ namespace TRPG.Controllers
             Character character = await _db.Characters.FindAsync(characterId);
 
             character.Objects.Remove(objectName);
+
+            await _db.SaveChangesAsync();
+
+            return Ok(character);
+        }
+
+        [HttpGet("{id}/created")]
+        public async Task<IActionResult> IsCharacterCreated(int id)
+        {
+            Character character = await _db.Characters.FindAsync(id);
+            if (character == null)
+                return Ok(new IsCharacterCreatedVM(false, 0));
+
+            return Ok(character.IsCharacterCreated());
+        }
+
+        [HttpPost("{id}/wand/add")]
+        public async Task<IActionResult> AddWand(int id, WandVM wand)
+        {
+            Character character = await _db.Characters.FindAsync(id);
+
+            Wand wandModel = new Wand()
+            {
+                Rigidity = wand.Rigidity,
+                Size = wand.Size,
+                WandHeartType = wand.WandHeartType,
+                Wood = wand.Wood,
+            };
+
+            character.Wand = wandModel;
 
             await _db.SaveChangesAsync();
 
