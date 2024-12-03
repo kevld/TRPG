@@ -43,4 +43,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.UseCors("AllowAll");
-app.Run();
+await app.RunAsync();

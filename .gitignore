@@ -365,3 +365,6 @@ FodyWeavers.xsd
 /TRPG/db.db-shm
 /TRPG/db.db-wal
 /TRPG/doc.xml
+/.sonarqube/conf
+/RunSonar.bat
+/StartSonar.bat

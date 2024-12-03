@@ -3,11 +3,29 @@ using TRPG.Enums;
 
 namespace TRPG.ViewModels
 {
+    /// <summary>
+    /// Wand
+    /// </summary>
     public class WandVM
     {
-        public WandHeartType WandHeartType { get; set; }
-        public string Wood { get; set; }
-        public string Rigidity { get; set; }
-        public string Size { get; set; }
+        /// <summary>
+        /// Type
+        /// </summary>
+        public WandHeartType WandHeartType { get; set; } = WandHeartType.None;
+
+        /// <summary>
+        /// Wood
+        /// </summary>
+        public string Wood { get; set; } = "";
+
+        /// <summary>
+        /// Rigidity
+        /// </summary>
+        public string Rigidity { get; set; } = "";
+
+        /// <summary>
+        /// Size
+        /// </summary>
+        public string Size { get; set; } = "";
     }
 }

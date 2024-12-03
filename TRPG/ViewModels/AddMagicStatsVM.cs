@@ -1,9 +1,23 @@
 ﻿namespace TRPG.ViewModels
 {
+    /// <summary>
+    /// Magic stats
+    /// </summary>
     public class AddMagicStatsVM
     {
-        public int PotionMagic { get; set; }
-        public int CharmsAndMetamorphosisMagic { get; set; }
-        public int AttackAndDefenseMagic { get; set; }
+        /// <summary>
+        /// Potions
+        /// </summary>
+        public int PotionMagic { get; set; } = 0;
+
+        /// <summary>
+        /// Charms
+        /// </summary>
+        public int CharmsAndMetamorphosisMagic { get; set; } = 0;
+
+        /// <summary>
+        /// Atk/def
+        /// </summary>
+        public int AttackAndDefenseMagic { get; set; } = 0;
     }
 }

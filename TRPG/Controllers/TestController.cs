@@ -4,18 +4,31 @@ using TRPG.System;
 
 namespace TRPG.Controllers
 {
+    /// <summary>
+    /// Testing features
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
-    public class TestController: ControllerBase
+    public class TestController : ControllerBase
     {
         private readonly Db _context;
+
+        /// <summary>
+        /// DB Context
+        /// </summary>
+        /// <param name="context"></param>
         public TestController(Db context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// Import spells
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> ImportCsv()
+        [ProducesResponseType(typeof(IActionResult), StatusCodes.Status200OK)]
+        public IActionResult ImportCsv()
         {
             var csvSpells = new ImportSpellCsv(_context);
             csvSpells.ImportCsvFile("./spells.csv");
