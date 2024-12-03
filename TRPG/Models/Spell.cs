@@ -33,10 +33,6 @@ namespace TRPG.Models
 
             builder
             .HasKey(x => new { x.Name });
-
-            builder.HasData(
-                new { Id = 1, Name = "" }
-            );
         }
     }
 }

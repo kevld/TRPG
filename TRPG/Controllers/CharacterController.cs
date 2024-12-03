@@ -8,6 +8,9 @@ using TRPG.ViewModels;
 
 namespace TRPG.Controllers
 {
+    /// <summary>
+    /// COntroller characet
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class CharacterController : ControllerBase
@@ -19,10 +22,16 @@ namespace TRPG.Controllers
             _db = db;
         }
 
-        [HttpGet("{name}")]
-        public async Task<IActionResult> GetCharacterByName(string name)
+        /// <summary>
+        /// perso par nom
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetCharacterByUserId(string userId)
         {
-            var character = await _db.Characters.SingleOrDefaultAsync(c => c.Name == name);
+            Guid id = Guid.Parse(userId);
+            var character = await _db.Characters.Include(x => x.Wand).SingleOrDefaultAsync(c => c.UserId == id);
 
             return Ok(character);
         }
@@ -30,9 +39,15 @@ namespace TRPG.Controllers
         [HttpPost("{userId}")]
         public async Task<IActionResult> CreateCharacter(string userId, [FromBody] string name)
         {
-            User user = await _db.Users.FindAsync(userId.ToString());
+            User user = await _db.Users
+                .Include(x => x.Character)
+                .FirstAsync(x => x.Id == Guid.Parse(userId));
             if (user == null)
                 return NotFound(userId);
+            if(user.Character != null)
+            {
+                return Ok(user.Character);
+            }
 
             Character character = new()
             {
@@ -54,11 +69,13 @@ namespace TRPG.Controllers
         }
 
         [HttpPut("{characterId}/set-house")]
-        public async Task<IActionResult> SetHouse(int characterId, [FromBody] HouseType houseType)
+        public async Task<IActionResult> SetHouse(int characterId, [FromBody] int houseType)
         {
-            Character character = await _db.Characters.FindAsync(characterId);
+            Character character = await _db.Characters
+                .Include(x => x.Wand)
+                .SingleOrDefaultAsync(x => x.Id == characterId);
 
-            character.House = houseType;
+            character.House = (HouseType)houseType;
 
             await _db.SaveChangesAsync();
 
@@ -68,12 +85,16 @@ namespace TRPG.Controllers
         [HttpPut("{characterId}/init-stat/base")]
         public async Task<IActionResult> AddBaseStats(int characterId, AddBaseStatsVM statsVM)
         {
-            Character character = await _db.Characters.FindAsync(characterId);
+            Character character = await _db.Characters
+                .Include(x => x.Wand)
+                .SingleOrDefaultAsync(x => x.Id == characterId);
 
             character.Courage += statsVM.Courage;
             character.Loyalty += statsVM.Loyalty;
             character.Intelligence += statsVM.Intelligence;
             character.Tricking += statsVM.Tricking;
+
+            character.LifePoints = character.MaxLifePoints = character.Courage + character.Loyalty + character.Intelligence + character.Tricking;
 
             await _db.SaveChangesAsync();
 
@@ -83,7 +104,9 @@ namespace TRPG.Controllers
         [HttpPut("{characterId}/init-stat/magic")]
         public async Task<IActionResult> AddMagicStats(int characterId, AddMagicStatsVM statsVM)
         {
-            Character character = await _db.Characters.FindAsync(characterId);
+            Character character = await _db.Characters
+                .Include(x => x.Wand)
+                .SingleOrDefaultAsync(x => x.Id == characterId);
 
             character.PotionMagic += statsVM.PotionMagic;
             character.CharmsAndMetamorphosisMagic += statsVM.CharmsAndMetamorphosisMagic;
@@ -97,7 +120,9 @@ namespace TRPG.Controllers
         [HttpPut("{characterId}/unlock-spell")]
         public async Task<IActionResult> UnlockSpell(int characterId, [FromBody] int spellId)
         {
-            Character character = await _db.Characters.FindAsync(characterId);
+            Character character = await _db.Characters
+                .Include(x => x.Wand)
+                .SingleOrDefaultAsync(x => x.Id == characterId);
             Spell spell = await _db.Spells.FindAsync(spellId);
 
             character.UnlockedSpells.Add(spell);
@@ -110,7 +135,9 @@ namespace TRPG.Controllers
         [HttpPut("{characterId}/add-stat")]
         public async Task<IActionResult> AddStatOn(int characterId, string statName)
         {
-            Character character = await _db.Characters.FindAsync(characterId);
+            Character character = await _db.Characters
+                .Include(x => x.Wand)
+                .SingleOrDefaultAsync(x => x.Id == characterId);
 
             PropertyInfo propertyInfo = character.GetType().GetProperty(statName);
 
@@ -132,7 +159,9 @@ namespace TRPG.Controllers
         [HttpPut("{characterId}/add-lp")]
         public async Task<IActionResult> AddLifePoints(int characterId, [FromBody] int amount)
         {
-            Character character = await _db.Characters.FindAsync(characterId);
+            Character character = await _db.Characters
+                .Include(x => x.Wand)
+                .SingleOrDefaultAsync(x => x.Id == characterId);
 
             character.LifePoints += amount;
 
@@ -144,7 +173,9 @@ namespace TRPG.Controllers
         [HttpPut("{characterId}/object/add")]
         public async Task<IActionResult> AddObjectToInventory(int characterId, [FromBody] string objectName)
         {
-            Character character = await _db.Characters.FindAsync(characterId);
+            Character character = await _db.Characters
+                .Include(x => x.Wand)
+                .SingleOrDefaultAsync(x => x.Id == characterId);
 
             character.Objects.Add(objectName);
 
@@ -156,7 +187,9 @@ namespace TRPG.Controllers
         [HttpPut("{characterId}/object/use")]
         public async Task<IActionResult> UseObjectFromInventory(int characterId, [FromBody] string objectName)
         {
-            Character character = await _db.Characters.FindAsync(characterId);
+            Character character = await _db.Characters
+                .Include(x => x.Wand)
+                .SingleOrDefaultAsync(x => x.Id == characterId);
 
             character.Objects.Remove(objectName);
 
@@ -168,7 +201,7 @@ namespace TRPG.Controllers
         [HttpGet("{id}/created")]
         public async Task<IActionResult> IsCharacterCreated(int id)
         {
-            Character character = await _db.Characters.FindAsync(id);
+            Character character = await _db.Characters.Include(x => x.Wand).FirstOrDefaultAsync(x => x.Id == id);
             if (character == null)
                 return Ok(new IsCharacterCreatedVM(false, 0));
 
@@ -186,9 +219,10 @@ namespace TRPG.Controllers
                 Size = wand.Size,
                 WandHeartType = wand.WandHeartType,
                 Wood = wand.Wood,
+                Character = character
             };
 
-            character.Wand = wandModel;
+            _db.Wands.Add(wandModel);
 
             await _db.SaveChangesAsync();
 

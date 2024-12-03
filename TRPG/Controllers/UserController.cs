@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TRPG.Models;
 
 namespace TRPG.Controllers
@@ -19,7 +20,15 @@ namespace TRPG.Controllers
         {
             try
             {
-                var user = new User()
+                User? user;
+
+                user = await _db.Users.FirstOrDefaultAsync(x => x.Name == name);
+                if (user != null)
+                {
+                    return Ok(user);
+                }
+
+                user = new User()
                 {
                     Name = name
                 };
@@ -38,9 +47,12 @@ namespace TRPG.Controllers
         [HttpGet("{userId}/character")]
         public async Task<IActionResult> GetCharacterIdByUserId(string userId)
         {
-            User user = _db.Users.Find(userId);
+            Guid guid = Guid.Parse(userId);
+            Character character = await _db.Characters
+                .Include(x => x.Wand)
+                .SingleOrDefaultAsync(x => x.UserId == guid);
 
-            return Ok(user?.Character?.Id);
+            return Ok(character);
         }
     }
 }

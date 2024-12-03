@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using TRPG.Enums;
 using TRPG.ViewModels;
 
@@ -39,7 +40,10 @@ namespace TRPG.Models
 
         public Wand? Wand { get; set; }
 
+        [JsonIgnore]
         public User User { get; set; } = null!;
+
+        [ForeignKey("User")]
         public Guid UserId { get; set; }
 
         public IsCharacterCreatedVM IsCharacterCreated()
@@ -80,9 +84,10 @@ namespace TRPG.Models
             builder
             .Property(x => x.Id)
             .ValueGeneratedOnAdd();
+            builder.HasOne(x => x.User);
 
             builder
-            .HasKey(x => new { x.Name });
+            .HasKey(x => new { x.Id });
 
             builder
                 .HasMany(x => x.UnlockedSpells).WithMany();

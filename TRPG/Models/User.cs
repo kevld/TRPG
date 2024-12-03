@@ -25,8 +25,10 @@ namespace TRPG.Models
             .Property(x => x.Id)
             .ValueGeneratedOnAdd();
 
+            builder.HasIndex(x => x.Name).IsUnique();
+
             builder
-            .HasKey(x => new { x.Name });
+            .HasKey(x => new { x.Id });
         }
     }
 }

@@ -1,0 +1,131 @@
+"Id";"Year";"Name";"Description";"Type"
+1;1;Alohomora;Sortilège de déverrouillage.;1
+2;1;Calvorio;Sortilège de crâne chauve.;2
+3;1;Colovaria;Sortilège de changement de couleur.;1
+4;1;Diminuendo;Sortilège de rétrécissement.;1
+5;1;Elasticus;Sortilège de ramollissement.;1
+6;1;Finite Incantatem;Anti-sort (annule les enchantements).;2
+7;1;Locomotor Mortis;Sortilège du bloque-jambes.;2
+8;1;Limacius Eructo;Sort de crache-limaces.;2
+9;1;Lumos;Sortilège d’allumage de baguette.;1
+10;1;Periculum;Étincelles rouges (signalisation).;1
+11;1;Petrificus Totalus;Sortilège du saucisson (paralysie totale).;2
+12;1;Tergeo;Sortilège de nettoyage.;1
+13;1;Ventus;Sortilège de vent.;2
+14;1;Wingardium Leviosa;Sortilège de lévitation.;1
+15;1;Philtre Calmant;Potion apaisante.;0
+16;1;Potion contre la Toux;Soulage la toux.;0
+17;1;Potion de Babillage;Rend les propos incompréhensibles.;0
+18;1;Potion de Ratatinage;Réduit ou ratatine des objets ou créatures.;0
+19;2;Époxymisation;Sort d’objet adhésif.;1
+20;2;Eternulus;Maléfice d’éternuement.;2
+21;2;Expelliarmus;Sortilège de désarmement.;1
+22;2;Flambios;Sortilège d’écriture enflammée.;1
+23;2;Fumos;Sortilège de l’écran de fumée.;1
+24;2;Incendio;Sortilège de feu.;1
+25;2;Mucus ad Nauseam;Sortilège des crottes de nez.;2
+26;2;Obscuro;Sortilège des yeux bandés.;1
+27;2;Protego;Charme du bouclier.;2
+28;2;Reparo;Sortilège de réparation.;1
+29;2;Rictusempra;Sortilège hilarant.;2
+30;2;Serpensortia;Sort de l’invocation au serpent.;1
+31;2;Titillando;Maléfice de chatouillis.;2
+32;2;Décoction Hoqueteuse;Potion qui donne le hoquet.;0
+33;2;Essence de Murlap;Potion pour soulager les blessures.;0
+34;2;Philtre de Mandragore;Potion anti-malédiction.;0
+35;2;Potion de Beauté;Améliore l’apparence physique.;0
+36;2;Potion de Vieillissement;Provoque un vieillissement temporaire.;0
+37;3;Anteoculatia;Maléfice des bois sur la tête.;2
+38;3;Colloshoo;Maléfice du pot de colle (colle les pieds au sol).;2
+39;3;Engorgio;Maléfice d’enflure (agrandit un objet).;2
+40;3;Ferula;Sort d’attelle (bandages magiques).;2
+41;3;Herbivicus;Sortilège de pousse des plantes.;1
+42;3;Illegibilus;Sortilège d’illisibilité (texte illisible).;1
+43;3;Impervius;Sortilège d’imperméabilité.;1
+44;3;Mutismus;Sortilège de la langue de plomb (silence forcé).;2
+45;3;Orchideus;Sort d’apparition de fleurs.;1
+46;3;Prior Incanto;Sort de remontée des sortilèges (trace du dernier sort).;1
+47;3;Réparifargex;Sortilège d’annulation de métamorphose.;1
+48;3;Riddikulus;Sortilège de défense contre les Épouvantards.;2
+49;3;Tarentallegra;Sortilège de danse endiablée.;2
+50;3;Philtre Dégonflant;Potion pour annuler une enflure.;0
+51;3;Pimentine;Potion contre le rhume.;0
+52;3;Pommade Pommadante;Crème magique (effets variés selon l’usage).;0
+53;3;Potion d’Amitié;Renforce les relations amicales.;0
+54;3;Potion d’Enflure;Provoque un gonflement exagéré.;0
+55;3;Somnifère;Potion de sommeil (endort rapidement).;0
+56;4;Accio;Sortilège d’attraction (fait venir un objet).;1
+57;4;Avis;Sort d’apparition d’oiseaux.;1
+58;4;Dentesaugmento;Maléfice d’allonge-dent.;2
+59;4;Diffindo;Sortilège de découpe.;1
+60;4;Episkey;Sort de soin mineur (blessures légères).;2
+61;4;Furunculus;Maléfice de furoncle.;2
+62;4;Impedimenta;Maléfice d’entrave (ralentit ou bloque).;2
+63;4;Incarcerem;Sort d’invocation de chaînes.;1
+64;4;Locomotor Wibbly;Maléfice de jambe en coton.;2
+65;4;Reducto;Sortilège de destruction des objets solides.;2
+66;4;Repulso;Sortilège d’expulsion (repousse un objet).;1
+67;4;Sonorus;Sortilège d’amplification des sons.;1
+68;4;Sourdinam;Sortilège d’insonorisation.;1
+69;4;Stupéfix;Sortilège incapacitant (paralyse).;1
+70;4;Philtre revigorant;Potion pour redonner de l’énergie.;0
+71;4;Potion contre l’acnée;Élimine les boutons.;0
+72;4;Potion de protection contre le feu;Rend temporairement résistant au feu.;0
+73;4;Potion laxative;Provoque des troubles digestifs.;0
+74;5;Anapneo;Sort anti-étouffement.;2
+75;5;Aperio;Sortilège d’ouverture.;1
+76;5;Cantis;Sortilège de chant.;1
+77;5;Colloportus;Sortilège de verrouillage.;1
+78;5;Evanesco;Sort de disparition (efface objets/matières).;1
+79;5;Expecto Patronum;Sortilège du Patronus (chasse les Détraqueurs).;1
+80;5;Lashlabask;Maléfice de répulsion.;2
+81;5;Oppugno;Sort d’attaque d’objets.;2
+82;5;Protego Totalum;Charme du bouclier en dôme.;2
+83;5;Repello Moldum;Sortilège anti-moldu.;1
+84;5;Révélasort de Scarpin;Révèle les sortilèges.;1
+85;5;Silencio;Sortilège de silence.;1
+86;5;Vulnera Sanentur;Sort de guérison des plaies.;2
+87;5;Amortentia;Philtre d’amour.;0
+88;5;Philtre d’embrouille;Potion qui trouble l’esprit.;0
+89;5;Essence de dictame;Potion de soin (guérison rapide).;0
+90;5;Antidote au Philtre d’amour;Neutralise les effets d’un philtre d’amour.;0
+91;5;Potion d’aiguise-méninges;Aide à réfléchir et à se concentrer.;0
+92;6;Aguamenti;Sortilège d’eau (crée un jet d’eau).;1
+93;6;Apparate;Sort de téléportation.;1
+94;6;Assurdiato;Sort des oreilles qui bourdonnent.;1
+95;6;Bloclang;Maléfice de la langue bloquée.;2
+96;6;Confundo;Sortilège de confusion.;1
+97;6;Deprimo;Sort de perforation (crée une dépression).;1
+98;6;Ebublio;Maléfice de la bulle (piège dans des bulles).;2
+99;6;Emendo;Sort de réparation des os cassés.;2
+100;6;Flipendo;Sortilège du repoustout (repousse la cible).;2
+101;6;Gemino;Sort de duplication d’objets.;2
+102;6;Melofors;Maléfice de la tête de citrouille.;2
+103;6;Pullus;Maléfice de la poule (transforme en poule).;2
+104;6;Revelio;Sortilège de révélation.;1
+105;6;Antidote au Veritaserum;Neutralise les effets du sérum de vérité.;0
+106;6;Gaz Étrangleur;Potion qui crée un gaz toxique.;0
+107;6;Philtre de Mort Vivante;Potion provoquant un sommeil profond.;0
+108;6;Solution de Force;Augmente la force physique temporairement.;0
+109;6;Veritaserum;Potion de vérité (force à dire la vérité).;0
+110;7;Baubillious;Sortilège d’éclair.;1
+111;7;Confringo;Sortilège d’explosion.;2
+112;7;Duro;Sortilège de durcissement (solidifie un objet).;1
+113;7;Fianto Duri;Sortilège de protection renforcée.;2
+114;7;Hominum Revelio;Sortilège de révélation d’une personne.;1
+115;7;Legilimens;Sortilège de lecture dans les pensées.;1
+116;7;Levicorpus;Maléfice de suspension dans l’air.;2
+117;7;Mutatio;Maléfice de mutation (modifie une cible).;2
+118;7;Oubliettes;Sortilège d’amnésie (efface la mémoire).;1
+119;7;Portus;Sortilège de création de Portoloin.;1
+120;7;Redactum;Maléfice de rétrécissement.;2
+121;7;Vermiculus;Maléfice de transformation en ver.;2
+122;7;Élixir d’Euphorie;Potion qui provoque une intense euphorie.;0
+123;7;Felix Felicis;Potion de chance (augmente la réussite).;0
+124;7;Polynectar;Potion de transformation (prend l’apparence d’un autre).;0
+125;7;Potion d’Amnésie;Efface les souvenirs de la cible.;0
+126;7;Potion de Régénération sanguine;Restaure le sang perdu.;0
+127;7;Poussos;Potion de repousse des os.;0
+128;8;Avada Kedavra;Sortilège de la Mort (tue instantanément).;3
+129;8;Endoloris;Sortilège de Doloris (provoque une douleur intense).;3
+130;8;Impero;Sortilège de l’Imperium (contrôle mental).;3
